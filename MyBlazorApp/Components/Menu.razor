@@ -1,0 +1,24 @@
+﻿<nav>
+    <ul>
+        @foreach (var item in MenuItems)
+        {
+            <li><a href="@item.Href">@item.Title</a></li>
+        }
+        @* <li><NavLink href="/">Accueil</NavLink></li>
+        <li><NavLink href="/about">À Propos</NavLink></li> *@
+    </ul>
+</nav>
+
+@code {
+
+    // List<MenuItem> MenuItems = [
+    //     new MenuItem { Title = "Accueil", Href = "/" },
+    //     new MenuItem { Title = "À Propos", Href = "/about" },
+    // ];
+
+    // class MenuItem
+    // {
+    //     public string Href { get; set; } = null!;
+    //     public string Title { get; set; } = null!;
+    // }
+}

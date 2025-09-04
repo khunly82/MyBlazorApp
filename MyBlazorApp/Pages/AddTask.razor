@@ -1,0 +1,32 @@
+﻿<MudDialog>
+    <DialogContent>
+        <EditForm OnValidSubmit="Submit" Model="NouvelleTache">
+            <DataAnnotationsValidator />
+            @* nom *@
+            <div>
+                <MudTextField Label="Nom" Variant="Variant.Outlined" @bind-Value="NouvelleTache.Nom"></MudTextField>
+                <ValidationMessage For="() => NouvelleTache.Nom" />
+            </div>
+            @* duree *@
+            <div>
+                <MudNumericField Label="Durée" Variant="Variant.Outlined" @bind-Value="NouvelleTache.Duree"></MudNumericField>
+                <ValidationMessage For="() => NouvelleTache.Duree" />
+            </div>
+            <div>
+                <MudButton ButtonType="ButtonType.Submit">Sauver</MudButton>
+            </div>
+        </EditForm>
+    </DialogContent>
+</MudDialog>
+
+@code {
+    [CascadingParameter]
+    public IMudDialogInstance Dialog { get; set; } = null!;
+
+    public Tache NouvelleTache { get; set; } = new Tache();
+
+    public void Submit()
+    {
+        Dialog.Close(DialogResult.Ok(NouvelleTache));
+    }
+}

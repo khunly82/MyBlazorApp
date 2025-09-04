@@ -1,0 +1,16 @@
+﻿<MudDialog>
+    <TitleContent>Confirmation</TitleContent>
+    <DialogContent>
+        Êtes vous sûr de continuer ?
+    </DialogContent>
+    <DialogActions>
+        <MudButton onclick="() => MudDialog.Cancel()">Annuler</MudButton>
+        <MudButton onClick="() => MudDialog.Close()" 
+            Variant="Variant.Filled" Color="Color.Error">Confirmer</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter]
+    private IMudDialogInstance MudDialog { get; set; } = null!;
+}

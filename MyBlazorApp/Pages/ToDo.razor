@@ -1,0 +1,36 @@
+﻿@page "/todo"
+
+@* @inject IDialogService Service *@
+
+<div>
+<MudButton Variant="Variant.Filled" Ripple Color="Color.Secondary"
+           onclick="OpenAddDialog">Nouveau</MudButton>
+</div>
+
+<div>
+    <MudTable Items="Taches">
+        <HeaderContent>
+            <MudTh>Nom</MudTh>
+            <MudTh>Durée</MudTh>
+            <MudTh>État</MudTh>
+            <MudTh>Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>@context.Nom</MudTd>
+            <MudTd>@context.Duree min.</MudTd>
+            <MudTd>@context.Etat</MudTd>
+            <MudTd>
+                <MudIconButton Size="Size.Small"
+                               Variant="Variant.Outlined"
+                               Color="Color.Primary"
+                               Icon="@Icons.Material.Filled.AcUnit"
+                               onclick="() => ChangeState(context)"></MudIconButton>
+                <MudIconButton Size="Size.Small"
+                               Color="Color.Error"
+                               Variant="Variant.Outlined"
+                               Icon="@Icons.Material.Filled.Girl"
+                               onclick="() => RemoveTask(context)"></MudIconButton>
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+</div>

@@ -1,0 +1,20 @@
+﻿@page "/about"
+
+<h1>@Nb</h1>
+<button @onclick="Increase">+</button>
+
+@code {
+    public int Nb { get; set; } = 0;
+
+    public async void Increase()
+    {
+        // simulation d'une requète API
+        await Task.Run(() =>
+        {
+            Thread.Sleep(1000);
+        });
+        Nb++;
+        // nécessaire si on éxécute un traitement asynchrone (appel api) 
+        StateHasChanged();
+    }
+}

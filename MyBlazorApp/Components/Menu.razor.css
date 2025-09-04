@@ -1,0 +1,12 @@
+﻿ul {
+    list-style: none;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background-color: hotpink;
+    li {
+       a { color: white; text-decoration: unset; }
+    }
+}
