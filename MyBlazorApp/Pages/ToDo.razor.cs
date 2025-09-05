@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using MyBlazorApp.Components;
 using MyBlazorApp.Models;
@@ -9,6 +10,7 @@ using System.Text.Json.Serialization;
 
 namespace MyBlazorApp.Pages
 {
+    [Authorize]
     public partial class ToDo
     {
         [Inject]

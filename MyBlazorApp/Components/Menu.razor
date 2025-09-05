@@ -1,4 +1,5 @@
-﻿<nav>
+﻿
+<nav>
     <ul>
         @foreach (var item in MenuItems)
         {
@@ -6,6 +7,7 @@
         }
         @* <li><NavLink href="/">Accueil</NavLink></li>
         <li><NavLink href="/about">À Propos</NavLink></li> *@
+        <li><MudButton onclick="Logout">Logout</MudButton></li>
     </ul>
 </nav>
 

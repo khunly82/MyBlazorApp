@@ -1,0 +1,60 @@
+﻿@page "/login"
+@using Microsoft.AspNetCore.Components.Authorization
+@using Newtonsoft.Json
+
+<EditForm Model="Form" OnValidSubmit="Submit">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+
+    <MudTextField 
+        Variant="Variant.Filled" 
+        @bind-value="Form.Username"></MudTextField>
+    <ValidationMessage For="() => Form.Username"></ValidationMessage>
+
+    <MudTextField 
+        InputType="InputType.Password" 
+        Variant="Variant.Filled"  
+        @bind-value="Form.Password"></MudTextField>
+    <ValidationMessage  For="() => Form.Password"></ValidationMessage>
+
+    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled">Se Connecter</MudButton>
+
+</EditForm>
+
+@code {
+    [Inject]
+    public NavigationManager NavigationManager { get; set; } = null!;
+
+    [Inject]
+    public HttpClient Http { get; set; } = null!;
+
+    [Inject]
+    public ISnackbar Snackbar { get; set; } = null!;
+
+    [Inject]
+    public AuthenticationStateProvider AuthStateProvider { get; set; } = null!;
+
+    public LoginForm Form { get; set; } = new LoginForm();
+
+
+
+    public async void Submit()
+    {
+        var response = await Http.PostAsJsonAsync("http://10.10.5.126:60981/api/auth/login", Form);
+        if(response.IsSuccessStatusCode)
+        {
+            // rediriger vers la page toDo
+            Snackbar.Add("Welcome", Severity.Info);
+
+            string token = JsonConvert.DeserializeObject<LoginResponse>(await response.Content.ReadAsStringAsync())!.Token;
+
+            (AuthStateProvider as MyAuthStateProvider)!.Token = token;
+
+            NavigationManager.NavigateTo("/todo");
+        }
+        else
+        {
+            // afficher un message d'erreur
+            Snackbar.Add("Bad credentials", Severity.Error);
+        }
+    }
+}
