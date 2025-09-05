@@ -9,6 +9,5 @@ namespace MyBlazorApp.Models
         public string Nom { get; set; } = null!;
         [Range(1, int.MaxValue, ErrorMessage = "Au moins 1")]
         public int Duree { get; set; } // minutes
-        public Etat Etat { get; set; }
     }
 }
