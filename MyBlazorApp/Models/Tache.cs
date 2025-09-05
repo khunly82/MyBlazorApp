@@ -1,14 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace MyBlazorApp.Models
+﻿namespace MyBlazorApp.Models
 {
     public class Tache
     {
-        [Required(ErrorMessage = "Ce Champs est requis")]
-        [MinLength(2, ErrorMessage = "Doit faire au - 2 caractères")]
+        public int Id { get; set; }
         public string Nom { get; set; } = null!;
-        [Range(1, int.MaxValue, ErrorMessage = "Au moins 1")]
-        public int Duree { get; set; } // minutes
+        public int Duree { get; set; }
         public Etat Etat { get; set; }
     }
 }

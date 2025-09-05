@@ -23,7 +23,7 @@
     [CascadingParameter]
     public IMudDialogInstance Dialog { get; set; } = null!;
 
-    public Tache NouvelleTache { get; set; } = new Tache();
+    public Tache NouvelleTache { get; set; } = new Tache() { Nom = "Tache exemple" };
 
     public void Submit()
     {
